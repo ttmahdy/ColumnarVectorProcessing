@@ -773,6 +773,4 @@ int main() {
     cout << "SIMD Q1 avg_price " << simdQ1.avg_price << endl;
     cout << "SIMD Q1 sum_base_price " << simdQ1.sum_base_price << endl;
 
-    SIMDSumArray(orderkeyArray,loopCount,datasize);
-    ScalarSumArray(orderkeyArray,loopCount,datasize);
 }
