@@ -531,6 +531,7 @@ struct Q1Results
     float count_order;      //count(*) as count_order
 };
 
+// Implements Q1 without Group by or filter 
 Q1Results RunQ1Scalar (float* l_quantity, float* l_extendedprice,
                        float* l_discount, float* l_tax, int arrayLength,
                        int loopCount)
@@ -577,8 +578,7 @@ Q1Results RunQ1Scalar (float* l_quantity, float* l_extendedprice,
     return scalarQ1;
 }
 
-// Implements Sum(A* x (1-B*)*(1+C) in SIMD
-//(l_extendedprice*(1-l_discount)*(1+l_tax))
+// Implements Q1 without Group by or filter using SIMD
 Q1Results RunQ1SIMD(float* l_quantity, float* l_extendedprice,
                   float* l_discount, float* l_tax, int arrayLength,
                   int loopCount)
