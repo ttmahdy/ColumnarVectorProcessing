@@ -479,45 +479,6 @@ void CheckCpuFeatures()
             printf("This CPU does not support all ISA extensions introduced in Haswell\n");
 }
 
-void unorderedMapTest()
-{
-    std::tr1::unordered_map < std::string,int, boost::hash<string> > myMap;
-    string L_SHIPDATE1 = "12/12/1982";
-    string L_SHIPDATE2 = "13/12/1982";
-    std::tr1::unordered_map < std::string,int>::const_iterator got = myMap.find (L_SHIPDATE1);
-
-    // This should be null
-    cout << "Should be 0 " << myMap[L_SHIPDATE1] << endl;
-
-    if(got == myMap.end())
-    {
-        myMap[L_SHIPDATE1] = 1;
-        myMap[L_SHIPDATE1] = myMap.size();
-    }
-
-    cout << "Should be 1 " << myMap[L_SHIPDATE1] << endl;
-
-    got = myMap.find (L_SHIPDATE1);
-
-    if(got == myMap.end())
-    {
-        myMap[L_SHIPDATE1] = 1;
-        myMap[L_SHIPDATE1] = myMap.size();
-    }
-
-    cout << "Should be 1 " << myMap[L_SHIPDATE1] << endl;
-
-    got = myMap.find (L_SHIPDATE2);
-
-    if(got == myMap.end())
-    {
-        myMap[L_SHIPDATE2] = 1;
-        myMap[L_SHIPDATE2] = myMap.size();
-    }
-
-    cout << "Should be 2 " << myMap[L_SHIPDATE2] << endl;
-    cout << "current size " << myMap.size() << endl;
-}
 
 struct Q1Results
 {
@@ -577,6 +538,12 @@ Q1Results RunQ1Scalar (float* l_quantity, float* l_extendedprice,
     pt->GetReport();
     return scalarQ1;
 }
+
+
+
+
+
+
 
 // Implements Q1 without Group by or filter using SIMD
 Q1Results RunQ1SIMD(float* l_quantity, float* l_extendedprice,
